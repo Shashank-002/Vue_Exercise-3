@@ -11,7 +11,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="(time, index) in sortedTimes" :key="index">
+                <tr v-for="(time, index) in sortedReactionTimes" :key="index">
                     <td>{{ index + 1 }}</td>
                     <td>{{ time.date }}</td>
                     <td>{{ formatTime(time.score) }}</td>
@@ -27,12 +27,11 @@ export default {
     name: 'ReactionGameResult',
     data() {
         return {
-            reactionTimes: [],
+            reactionTimes: JSON.parse(localStorage.getItem("reactionTimes")) || [],
         };
     },
     computed: {
-        sortedTimes() {
-            // Sort the times in ascending order (fastest first)
+        sortedReactionTimes() {
             const sorted = [...this.reactionTimes].sort((a, b) => a.score - b.score);
             return sorted.slice(0, 10);
         },
@@ -116,6 +115,11 @@ h2 {
     margin-bottom: 20px;
     margin-left: 20px;
     text-align: left;
+}
+
+p {
+    text-align: left;
+    margin-left: 20px;
 }
 
 @media (max-width:1024px) {

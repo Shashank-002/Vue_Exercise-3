@@ -36,7 +36,7 @@ export default {
             buttonClass: "start-button",
             backgroundClass: "",
             timeoutID: null,
-            canStop: false,
+            gameCanStop: false,
             startTime: null,
             reactionTime: null,
             showModal: false,
@@ -51,29 +51,20 @@ export default {
                 return "00:00:00.000";
             }
 
-            // Use Date object to simplify conversion
             const date = new Date(this.reactionTime);
-
             const hours = date.getUTCHours();
             const minutes = date.getUTCMinutes();
             const seconds = date.getUTCSeconds();
             const milliseconds = date.getUTCMilliseconds();
 
-            // Pad each unit with leading zeros if necessary
-            const formattedHours = String(hours).padStart(2, '0');
-            const formattedMinutes = String(minutes).padStart(2, '0');
-            const formattedSeconds = String(seconds).padStart(2, '0');
-            const formattedMilliseconds = String(milliseconds).padStart(3, '0');
-
-            // Return the formatted time as "hh:mm:ss.mmm"
-            return `${formattedHours}:${formattedMinutes}:${formattedSeconds}.${formattedMilliseconds}`;
+            return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}.${String(milliseconds).padStart(3, '0')}`;
         },
     },
     methods: {
         handleButtonClick() {
             if (!this.gameStarted) {
                 this.startGame();
-            } else if (this.canStop) {
+            } else if (this.gameCanStop) {
                 this.stopGame();
             } else {
                 this.showError();
@@ -83,19 +74,19 @@ export default {
             this.buttonText = "Stop";
             this.message = "Pay attention. Click stop when the color changes.";
             this.gameStarted = true;
-            this.canStop = false;
+            this.gameCanStop = false;
             this.buttonClass = "stop-button";
             this.reactionTime = null;
             const delay = Math.floor(Math.random() * (5000 - 2000 + 1)) + 2000;
 
             this.timeoutID = setTimeout(() => {
-                this.canStop = true;
+                this.gameCanStop = true;
                 this.startTime = performance.now();
                 this.backgroundClass = "ready";
             }, delay);
         },
         stopGame() {
-            if (this.canStop) {
+            if (this.gameCanStop) {
                 this.reactionTime = performance.now() - this.startTime;
                 this.message = "Click Go to test your reaction time again!";
                 this.saveReactionTime(this.reactionTime);
@@ -107,16 +98,13 @@ export default {
         },
         saveReactionTime(time) {
             const reactionTimes = JSON.parse(localStorage.getItem('reactionTimes')) || [];
-
             reactionTimes.push({
                 score: time,
                 date: new Date().toLocaleString(),
             });
-
-            // Store updated reaction times back in localStorage
             localStorage.setItem('reactionTimes', JSON.stringify(reactionTimes));
+            this.$emit('savedScore', time);
         },
-
         showError() {
             this.message = "Too quick... Try again!";
             this.reactionTime = null;
@@ -126,7 +114,7 @@ export default {
             clearTimeout(this.timeoutID);
             this.buttonText = "Go";
             this.gameStarted = false;
-            this.canStop = false;
+            this.gameCanStop = false;
             this.backgroundClass = "";
             this.buttonClass = "start-button";
         },

@@ -1,7 +1,7 @@
 <template>
   <div>
-    <ReactionGamePlay />
-    <ReactionGameResult />
+    <ReactionGamePlay @savedScore="updateScore" />
+    <ReactionGameResult ref="highScoresComponent" />
   </div>
 </template>
 
@@ -15,6 +15,11 @@ export default {
     ReactionGamePlay,
     ReactionGameResult,
   },
+  methods: {
+    updateScore() {
+      this.$refs.highScoresComponent.fetchScores();
+    }
+  }
 };
 </script>
 

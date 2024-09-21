@@ -1,17 +1,21 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <ReactionGamePlay />
+    <ReactionGameResult />
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import ReactionGamePlay from './components/ReactionGamePlay.vue';
+import ReactionGameResult from './components/ReactionGameResult.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
-}
+    ReactionGamePlay,
+    ReactionGameResult,
+  },
+};
 </script>
 
 <style>

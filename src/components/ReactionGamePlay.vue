@@ -11,13 +11,13 @@
         </div>
 
         <!-- Popup Modal -->
-        <div v-if="showModal" class="modal">
+        <div v-if="showModal" class="PopUpmodal">
             <div class="modal-content">
                 <div class="error-icon">
                     <i class="info-icon">i</i>
                 </div>
                 <h2>Winner!</h2>
-                <p>Your score of {{ reactionTimeFormatted }} has been stored in your browser and could be lost when you
+                <p>Your score of {{ reactionTimeHourFormat }} has been stored in your browser and could be lost when you
                     leave. Create an account or login to automatically save them to your account!</p>
                 <button @click="closeModal" class="got-it-btn">Got it!</button>
             </div>
@@ -46,7 +46,7 @@ export default {
         reactionTimeInSeconds() {
             return this.reactionTime !== null ? (this.reactionTime / 1000).toFixed(3) : "0.000";
         },
-        reactionTimeFormatted() {
+        reactionTimeHourFormat() {
             if (this.reactionTime === null) {
                 return "00:00:00.000";
             }
@@ -193,7 +193,7 @@ export default {
     background-color: #5cb85c;
 }
 
-.modal {
+.PopUpmodal {
     position: fixed;
     z-index: 1;
     left: 0;
@@ -286,169 +286,179 @@ export default {
     }
 }
 
-@media (max-width:1024px)
-{
+@media (max-width:1024px) {
     .message-box {
-    margin-top: 20px;
-    background-color: #d9edf7;
-    border-radius: 10px;
-    font-size: 18px;
-    text-align: left;
-    color: #333;
-    width: 60%;
-    height: 25%;
-    padding: 20px;
-    gap: 10px;
+        margin-top: 20px;
+        background-color: #d9edf7;
+        border-radius: 10px;
+        font-size: 18px;
+        text-align: left;
+        color: #333;
+        width: 60%;
+        height: 25%;
+        padding: 20px;
+        gap: 10px;
+    }
+
+    .start-button,
+    .stop-button {
+        width: 65%;
+        height: 25%;
+        font-size: 40px;
+        border: none;
+        border-radius: 15px;
+        color: white;
+        cursor: pointer;
+    }
+
 }
 
-.start-button,
-.stop-button {
-    width: 65%;
-    height: 25%;
-    font-size: 40px;
-    border: none;
-    border-radius: 15px;
-    color: white;
-    cursor: pointer;
-}
-
-}
-
-@media (max-width:768px)
-{
+@media (max-width:768px) {
     .message-box {
-    margin-top: 20px;
-    background-color: #d9edf7;
-    border-radius: 10px;
-    font-size: 18px;
-    text-align: left;
-    color: #333;
-    width: 66%;
-    height: 25%;
-    padding: 20px;
-    gap: 10px;
+        margin-top: 20px;
+        background-color: #d9edf7;
+        border-radius: 10px;
+        font-size: 18px;
+        text-align: left;
+        color: #333;
+        width: 66%;
+        height: 25%;
+        padding: 20px;
+        gap: 10px;
+    }
+
+    .start-button,
+    .stop-button {
+        width: 73%;
+        height: 25%;
+        font-size: 40px;
+        border: none;
+        border-radius: 15px;
+        color: white;
+        cursor: pointer;
+    }
+
 }
 
-.start-button,
-.stop-button {
-    width: 73%;
-    height: 25%;
-    font-size: 40px;
-    border: none;
-    border-radius: 15px;
-    color: white;
-    cursor: pointer;
-}
-
-}
-
-@media (max-width:575px)
-{
+@media (max-width:575px) {
     .message-box {
-    margin-top: 20px;
-    background-color: #d9edf7;
-    border-radius: 10px;
-    font-size: 18px;
-    text-align: left;
-    color: #333;
-    width: 50%;
-    height: 38%;
-    padding: 20px;
-    gap: 10px;
+        margin-top: 20px;
+        background-color: #d9edf7;
+        border-radius: 10px;
+        font-size: 18px;
+        text-align: left;
+        color: #333;
+        width: 50%;
+        height: 38%;
+        padding: 20px;
+        gap: 10px;
+    }
+
+    .start-button,
+    .stop-button {
+        width: 60%;
+        height: 25%;
+        font-size: 40px;
+        border: none;
+        border-radius: 15px;
+        color: white;
+        cursor: pointer;
+    }
+
+    .modal-content {
+        width: 280px;
+    }
+
 }
 
-.start-button,
-.stop-button {
-    width: 60%;
-    height: 25%;
-    font-size: 40px;
-    border: none;
-    border-radius: 15px;
-    color: white;
-    cursor: pointer;
-}
-
-}
-
-@media (max-width:425px)
-{
+@media (max-width:425px) {
     .message-box {
-    margin-top: 20px;
-    background-color: #d9edf7;
-    border-radius: 10px;
-    font-size: 18px;
-    text-align: left;
-    color: #333;
-    width: 50%;
-    height: 38%;
-    padding: 20px;
-    gap: 10px;
+        margin-top: 20px;
+        background-color: #d9edf7;
+        border-radius: 10px;
+        font-size: 18px;
+        text-align: left;
+        color: #333;
+        width: 50%;
+        height: 38%;
+        padding: 20px;
+        gap: 10px;
+    }
+
+    .start-button,
+    .stop-button {
+        width: 65%;
+        height: 25%;
+        font-size: 40px;
+        border: none;
+        border-radius: 15px;
+        color: white;
+        cursor: pointer;
+    }
+
+    .modal-content {
+        width: 230px;
+    }
+
 }
 
-.start-button,
-.stop-button {
-    width: 65%;
-    height: 25%;
-    font-size: 40px;
-    border: none;
-    border-radius: 15px;
-    color: white;
-    cursor: pointer;
-}
-
-}
-
-@media (max-width:375px)
-{
+@media (max-width:375px) {
     .message-box {
-    margin-top: 20px;
-    background-color: #d9edf7;
-    border-radius: 10px;
-    font-size: 18px;
-    text-align: left;
-    color: #333;
-    width: 50%;
-    height: 38%;
-    padding: 20px;
-    gap: 10px;
+        margin-top: 20px;
+        background-color: #d9edf7;
+        border-radius: 10px;
+        font-size: 18px;
+        text-align: left;
+        color: #333;
+        width: 50%;
+        height: 38%;
+        padding: 20px;
+        gap: 10px;
+    }
+
+    .start-button,
+    .stop-button {
+        width: 65%;
+        height: 25%;
+        font-size: 40px;
+        border: none;
+        border-radius: 15px;
+        color: white;
+        cursor: pointer;
+    }
+
+    .modal-content {
+        width: 220px;
+    }
 }
 
-.start-button,
-.stop-button {
-    width: 65%;
-    height: 25%;
-    font-size: 40px;
-    border: none;
-    border-radius: 15px;
-    color: white;
-    cursor: pointer;
-}
-
-}
-
-@media (min-width:1600px)
-{
+@media (min-width:1600px) {
     .message-box {
-    margin-top: 20px;
-    background-color: #d9edf7;
-    border-radius: 10px;
-    font-size: 40px;
-    text-align: left;
-    color: #333;
-    width: 50%;
-    height: 25%;
-    padding: 30px;
-}
+        margin-top: 20px;
+        background-color: #d9edf7;
+        border-radius: 10px;
+        font-size: 40px;
+        text-align: left;
+        color: #333;
+        width: 50%;
+        height: 25%;
+        padding: 30px;
+    }
 
-.start-button,
-.stop-button {
-    width: 53%;
-    height: 25%;
-    font-size: 80px;
-    border: none;
-    border-radius: 15px;
-    color: white;
-    cursor: pointer;
-}
+    .start-button,
+    .stop-button {
+        width: 53%;
+        height: 25%;
+        font-size: 80px;
+        border: none;
+        border-radius: 15px;
+        color: white;
+        cursor: pointer;
+    }
+
+    .modal-content {
+        width: 500px;
+        height: 400px;
+    }
 }
 </style>

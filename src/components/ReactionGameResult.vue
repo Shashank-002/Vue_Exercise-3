@@ -1,8 +1,6 @@
 <template>
     <div class="high-scores">
         <h2>Your High Scores</h2>
-        <p>*You are not logged in! <a href="#">Create an account or login </a> now to save your scores to your account,
-            or they could be lost when you leave.</p>
         <p v-if="!reactionTimes.length">No high scores yet. Try playing a game!</p>
         <table v-else>
             <thead>
@@ -115,104 +113,79 @@ thead {
 
 h2 {
     font-size: 22px;
-    margin-bottom: 10px;
-    margin-left: 20px;
-    text-align: left;
-}
-
-p {
-    text-align: left;
-    margin-left: 20px;
     margin-bottom: 20px;
-    font-size: 18px;
+    margin-left: 20px;
+    text-align: left;
 }
 
-@media (max-width:1024px){
-    h2{
+@media (max-width:1024px) {
+    h2 {
         font-size: 20px;
-    }
-
-    p{
-        font-size: 16px;
-    }
-}
-
-@media (max-width:768px){
-    h2{
-        font-size: 20px;
-    }
-
-    p{
-        font-size: 16px;
-    }
-}
-
-@media (max-width:575px)
-{
-    td {
-    padding: 8px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-    font-size: 14px;
-}
-h2{
-        font-size: 18px;
-    }
-
-    p{
-        font-size: 14px;
-    }
-}
-
-@media (max-width:425px)
-{
-    td {
-    padding: 8px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-    font-size: 12px;
-}
-h2{
-        font-size: 18px;
-    }
-
-    p{
-        font-size: 14px;
-    }
-}
-
-@media (max-width:375px)
-{
-    td {
-    padding: 8px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-    font-size: 12px;
-}
-h2{
-        font-size: 18px;
-    }
-
-    p{
-        font-size: 14px;
-    }
-}
-
-@media (min-width:1600px)
-{
-    tr,td {
-    padding: 8px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-    font-size: 30px;
-}
-h2{
-        font-size: 32px;
         margin-bottom: 20px;
     }
+}
 
-    p{
-        font-size: 26px;
+@media (max-width:768px) {
+    h2 {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width:575px) {
+    td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+        font-size: 14px;
+    }
+
+    h2 {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width:425px) {
+    td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+        font-size: 12px;
+    }
+
+    h2 {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width:375px) {
+    td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+        font-size: 12px;
+    }
+
+    h2 {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+}
+
+@media (min-width:1600px) {
+
+    tr,
+    td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+        font-size: 30px;
+    }
+
+    h2 {
+        font-size: 32px;
         margin-bottom: 30px;
     }
 }

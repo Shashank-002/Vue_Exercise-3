@@ -24,7 +24,7 @@
 
 <script>
 export default {
-    name: 'ReactionTable',
+    name: 'ReactionTableDisplay',
     data() {
         return {
             reactionTimes: JSON.parse(localStorage.getItem("reactionTimes")) || [],

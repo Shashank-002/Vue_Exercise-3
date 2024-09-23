@@ -9,7 +9,7 @@
 
 <script>
 export default {
-    name: 'ShowResult',
+    name: 'ResultDisplay',
     props: {
         message: String,
         reactionTime: Number,
@@ -104,7 +104,7 @@ export default {
     .message-box {
         margin-top: 20px;
         background-color: #d9edf7;
-        border-radius: 10px;
+        border-radius: 5px;
         font-size: 18px;
         text-align: left;
         color: #333;

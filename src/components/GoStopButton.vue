@@ -243,11 +243,11 @@ export default {
 
     .start-button,
     .stop-button {
-        width: 159px;
+        width: 160px;
         height: 50px;
         font-size: 20px;
         border: none;
-        border-radius: 10px;
+        border-radius: 5px;
         color: white;
         cursor: pointer;
     }

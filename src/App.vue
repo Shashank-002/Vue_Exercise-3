@@ -3,24 +3,24 @@
     <div :class="['app', backgroundClass]">
       <GoStopButton :buttonText="buttonText" :buttonClass="buttonClass" :onButtonClick="handleButtonClick"
         :showModal="showModal" :modalMessage="modalMessage" @closeModal="closeModal" />
-      <ShowResult :message="message" :reactionTime="reactionTime" @savedScore="updateScore" />
+      <ResultDisplay :message="message" :reactionTime="reactionTime" @savedScore="updateScore" />
     </div>
-    <ResultTable ref="highScoresComponent" />
+    <ReactionTableDisplay ref="highScoresComponent" />
   </div>
 
 </template>
 
 <script>
 import GoStopButton from './components/GoStopButton.vue';
-import ShowResult from './components/ShowResult.vue';
-import ResultTable from './components/ResultTable.vue'
+import ResultDisplay from './components/ResultDisplay.vue';
+import ReactionTableDisplay from './components/ResultTableDisplay.vue'
 
 export default {
   name: 'App',
   components: {
     GoStopButton,
-    ShowResult,
-    ResultTable,
+    ResultDisplay,
+    ReactionTableDisplay,
   },
   data() {
     return {

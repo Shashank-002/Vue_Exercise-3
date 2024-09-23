@@ -40,91 +40,32 @@ export default {
     padding-top: 20px;
 }
 
-@media (max-width:768px) {
+@media (max-width: 768px) {
     .message-box {
-        margin-top: 20px;
-        background-color: #d9edf7;
-        border-radius: 10px;
         font-size: 18px;
-        text-align: left;
-        color: #333;
         width: 55%;
         height: 38%;
-        padding: 20px;
-        gap: 10px;
     }
 }
 
-@media (max-width:575px) {
+@media (max-width: 575px) {
     .message-box {
-        margin-top: 20px;
-        background-color: #d9edf7;
-        border-radius: 10px;
-        font-size: 18px;
-        text-align: left;
-        color: #333;
         width: 50%;
-        height: 38%;
-        padding: 20px;
-        gap: 10px;
     }
 }
 
-@media (max-width:575px) {
-    .message-box {
-        margin-top: 20px;
-        background-color: #d9edf7;
-        border-radius: 10px;
-        font-size: 18px;
-        text-align: left;
-        color: #333;
-        width: 50%;
-        height: 38%;
-        padding: 20px;
-        gap: 10px;
-    }
-}
 
-@media (max-width:425px) {
+@media (max-width: 375px) {
     .message-box {
-        margin-top: 20px;
-        background-color: #d9edf7;
-        border-radius: 10px;
-        font-size: 18px;
-        text-align: left;
-        color: #333;
-        width: 50%;
-        height: 38%;
-        padding: 20px;
-        gap: 10px;
-    }
-}
-
-@media (max-width:375px) {
-    .message-box {
-        margin-top: 20px;
-        background-color: #d9edf7;
         border-radius: 5px;
-        font-size: 18px;
-        text-align: left;
-        color: #333;
-        width: 50%;
-        height: 38%;
-        padding: 20px;
-        gap: 10px;
     }
 }
 
-@media (min-width:1600px) {
+@media (min-width: 1600px) {
     .message-box {
-        margin-top: 20px;
-        background-color: #d9edf7;
-        border-radius: 10px;
-        font-size: 40px;
-        text-align: left;
-        color: #333;
         width: 50%;
         height: 25%;
+        font-size: 40px;
         padding: 30px;
     }
 }

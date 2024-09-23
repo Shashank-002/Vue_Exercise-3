@@ -115,52 +115,23 @@ p {
     }
 }
 
-@media (max-width:768px) {
-    h2 {
-        font-size: 20px;
-        margin-bottom: 20px;
-    }
-}
-
 @media (max-width:575px) {
     td {
-        padding: 8px;
-        text-align: left;
-        border-bottom: 1px solid #ddd;
         font-size: 14px;
     }
 
     h2 {
         font-size: 18px;
-        margin-bottom: 20px;
     }
 }
 
 @media (max-width:425px) {
     td {
-        padding: 8px;
-        text-align: left;
-        border-bottom: 1px solid #ddd;
         font-size: 12px;
     }
 
     h2 {
         font-size: 18px;
-        margin-bottom: 20px;
-    }
-}
-
-@media (max-width:375px) {
-    td {
-        padding: 8px;
-        text-align: left;
-        border-bottom: 1px solid #ddd;
-        font-size: 12px;
-    }
-
-    h2 {
-        font-size: 18px;
-        margin-bottom: 20px;
     }
 }
 
@@ -168,14 +139,10 @@ p {
 
     .high-scores {
         max-width: 70%;
-        margin: 20px auto;
     }
 
     tr,
     td {
-        padding: 8px;
-        text-align: left;
-        border-bottom: 1px solid #ddd;
         font-size: 30px;
     }
 

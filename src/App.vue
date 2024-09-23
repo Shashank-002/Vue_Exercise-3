@@ -1,8 +1,9 @@
 <template>
   <div>
     <div :class="['app', backgroundClass]">
-      <ReactionGameStartStopButton :buttonText="buttonText" :buttonClass="buttonClass" :onButtonClick="handleButtonClick"
-        :showModal="showModal" :modalMessage="modalMessage" @closeModal="closeModal" />
+      <ReactionGameStartStopButton :buttonText="buttonText" :reactionGameButton="reactionGameButton"
+        :onButtonClick="onStartStopButtonClick" :showModal="showModal" :modalMessage="modalMessage"
+        @closeModal="closeModal" />
       <ReactionGameResultDisplay :message="message" :reactionTime="reactionTime" @savedScore="updateScore" />
     </div>
     <ReactionGameTopScoreTable ref="highScoresComponent" />
@@ -27,7 +28,7 @@ export default {
       buttonText: "Go",
       message: "Click Go to test your reaction time!",
       gameStarted: false,
-      buttonClass: "start-button",
+      reactionGameButton: "start-button",
       backgroundClass: "initial-bg",
       timeoutID: null,
       gameCanStop: false,
@@ -41,7 +42,7 @@ export default {
     updateScore() {
       this.$refs.highScoresComponent.fetchScores();
     },
-    handleButtonClick() {
+    onStartStopButtonClick() {
       if (!this.gameStarted) {
         this.startGame();
       } else if (this.gameCanStop) {
@@ -55,7 +56,7 @@ export default {
       this.message = "Pay attention. Click stop when the color changes.";
       this.gameStarted = true;
       this.gameCanStop = false;
-      this.buttonClass = "stop-button";
+      this.reactionGameButton = "stop-button";
       this.backgroundClass = "initial-bg";
       this.reactionTime = null;
 
@@ -104,7 +105,7 @@ export default {
       this.gameStarted = false;
       this.gameCanStop = false;
       this.backgroundClass = "initial-bg";
-      this.buttonClass = "start-button";
+      this.reactionGameButton = "start-button";
     },
     closeModal() {
       this.showModal = false;

@@ -1,18 +1,18 @@
 <template>
     <div>
-        <button :class="buttonClass" @click="handleButtonClick">
+        <button :class="reactionGameButton" @click="onStartStopButtonClick">
             {{ buttonText }}
         </button>
 
         <!-- Popup Modal -->
-        <div v-if="showModal" class="PopUpmodal">
-            <div class="modal-content">
+        <div v-if="showModal" class="reactionGameModal">
+            <div class="modalInnerContent">
                 <div class="error-icon">
                     <i class="info-icon">i</i>
                 </div>
                 <h2>Winner!</h2>
                 <p>{{ modalMessage }}</p>
-                <button @click="closeModal" class="got-it-btn">Got it!</button>
+                <button @click="closeModal" class="confirmation-button">Got it!</button>
             </div>
         </div>
     </div>
@@ -26,7 +26,7 @@ export default {
             type: String,
             required: true,
         },
-        buttonClass: {
+        reactionGameButton: {
             type: String,
             required: true,
         },
@@ -44,7 +44,7 @@ export default {
         },
     },
     methods: {
-        handleButtonClick() {
+        onStartStopButtonClick() {
             this.onButtonClick();
         },
         closeModal() {
@@ -78,7 +78,7 @@ export default {
     background-color: #5cb85c;
 }
 
-.PopUpmodal {
+.reactionGameModal {
     position: fixed;
     z-index: 1;
     left: 0;
@@ -91,7 +91,7 @@ export default {
     align-items: center;
 }
 
-.got-it-btn {
+.confirmation-button {
     margin-top: 20px;
     padding: 10px 20px;
     background-color: #6c63ff;
@@ -101,7 +101,7 @@ export default {
     cursor: pointer;
 }
 
-.modal-content {
+.modalInnerContent {
     background-color: white;
     padding: 20px;
     border-radius: 8px;
@@ -178,81 +178,57 @@ export default {
         width: 469px;
         height: 90px;
         font-size: 40px;
-        border: none;
-        border-radius: 10px;
-        color: white;
-        cursor: pointer;
     }
 
 }
 
-@media (max-width:768px) {
+@media (max-width: 768px) {
 
     .start-button,
     .stop-button {
         width: 370px;
         height: 75px;
         font-size: 32px;
-        border: none;
-        border-radius: 10px;
-        color: white;
-        cursor: pointer;
     }
-
 }
 
-@media (max-width:575px) {
+@media (max-width: 575px) {
 
     .start-button,
     .stop-button {
         width: 203px;
         height: 70px;
         font-size: 30px;
-        border: none;
-        border-radius: 10px;
-        color: white;
-        cursor: pointer;
     }
 
-    .modal-content {
+    .modalInnerContent {
         width: 280px;
     }
-
 }
 
-@media (max-width:425px) {
+@media (max-width: 425px) {
 
     .start-button,
     .stop-button {
-        width: 185px;
-        height: 60px;
-        font-size: 30px;
-        border: none;
-        border-radius: 10px;
-        color: white;
-        cursor: pointer;
+        width: 180px;
+        height: 50px;
+        font-size: 20px;
     }
 
-    .modal-content {
-        width: 230px;
+    .modalInnerContent {
+        width: 220px;
     }
-
 }
 
-@media (max-width:375px) {
+
+@media (max-width: 320px) {
 
     .start-button,
     .stop-button {
         width: 160px;
-        height: 50px;
-        font-size: 20px;
-        border: none;
-        border-radius: 5px;
-        color: white;
-        cursor: pointer;
     }
 
-    .modal-content {
+    .modalInnerContent {
         width: 220px;
     }
 }
@@ -264,13 +240,9 @@ export default {
         width: 946px;
         height: 160px;
         font-size: 60px;
-        border: none;
-        border-radius: 10px;
-        color: white;
-        cursor: pointer;
     }
 
-    .modal-content {
+    .modalInnerContent {
         width: 500px;
         height: 400px;
     }

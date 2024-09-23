@@ -46,9 +46,7 @@ export default {
         fetchScores() {
             const savedScores = JSON.parse(localStorage.getItem('reactionTimes')) || [];
 
-            this.reactionTimes = savedScores
-                .sort((a, b) => a.score - b.score)
-                .slice(0, 10);
+            this.reactionTimes = savedScores;
         },
 
         // Save the new score and ensure only top 10 scores are stored
@@ -62,7 +60,7 @@ export default {
             });
 
             // Sort the scores in ascending order and store the top 10
-            const topScores = savedScores.sort((a, b) => a.score - b.score).slice(0, 10);
+            const topScores = savedScores
 
             // Save the top 10 scores back to localStorage
             localStorage.setItem('reactionTimes', JSON.stringify(topScores));

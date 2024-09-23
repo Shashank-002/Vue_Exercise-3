@@ -9,7 +9,7 @@
 
 <script>
 export default {
-    name: 'ResultDisplay',
+    name: 'ReactionGameResultDisplay',
     props: {
         message: String,
         reactionTime: Number,

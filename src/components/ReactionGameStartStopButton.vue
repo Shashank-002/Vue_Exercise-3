@@ -20,7 +20,7 @@
 
 <script>
 export default {
-    name: 'GoStopButton',
+    name: 'ReactionGameStartStopButton',
     props: {
         buttonText: {
             type: String,

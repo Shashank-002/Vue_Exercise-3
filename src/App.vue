@@ -1,26 +1,26 @@
 <template>
   <div>
     <div :class="['app', backgroundClass]">
-      <GoStopButton :buttonText="buttonText" :buttonClass="buttonClass" :onButtonClick="handleButtonClick"
+      <ReactionGameStartStopButton :buttonText="buttonText" :buttonClass="buttonClass" :onButtonClick="handleButtonClick"
         :showModal="showModal" :modalMessage="modalMessage" @closeModal="closeModal" />
-      <ResultDisplay :message="message" :reactionTime="reactionTime" @savedScore="updateScore" />
+      <ReactionGameResultDisplay :message="message" :reactionTime="reactionTime" @savedScore="updateScore" />
     </div>
-    <ReactionTableDisplay ref="highScoresComponent" />
+    <ReactionGameTopScoreTable ref="highScoresComponent" />
   </div>
 
 </template>
 
 <script>
-import GoStopButton from './components/GoStopButton.vue';
-import ResultDisplay from './components/ResultDisplay.vue';
-import ReactionTableDisplay from './components/ResultTableDisplay.vue'
+import ReactionGameStartStopButton from './components/ReactionGameStartStopButton.vue';
+import ReactionGameResultDisplay from './components/ReactionGameResultDisplay.vue';
+import ReactionGameTopScoreTable from './components/ReactionGameTopScoreTable.vue'
 
 export default {
   name: 'App',
   components: {
-    GoStopButton,
-    ResultDisplay,
-    ReactionTableDisplay,
+    ReactionGameStartStopButton,
+    ReactionGameResultDisplay,
+    ReactionGameTopScoreTable,
   },
   data() {
     return {

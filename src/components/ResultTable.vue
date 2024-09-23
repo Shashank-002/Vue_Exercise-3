@@ -24,7 +24,7 @@
 
 <script>
 export default {
-    name: 'ReactionGameResult',
+    name: 'ReactionTable',
     data() {
         return {
             reactionTimes: JSON.parse(localStorage.getItem("reactionTimes")) || [],
@@ -39,25 +39,13 @@ export default {
     methods: {
         formatTime(score) {
             const date = new Date(score);
-            const hours = date.getUTCHours();
-            const minutes = date.getUTCMinutes();
-            const seconds = date.getUTCSeconds();
-            const milliseconds = date.getUTCMilliseconds();
-
-            const formattedHours = String(hours).padStart(2, '0');
-            const formattedMinutes = String(minutes).padStart(2, '0');
-            const formattedSeconds = String(seconds).padStart(2, '0');
-            const formattedMilliseconds = String(milliseconds).padStart(3, '0');
-
-            // Return the formatted time as hh:mm:ss.mmm
-            return `${formattedHours}:${formattedMinutes}:${formattedSeconds}.${formattedMilliseconds}`;
+            return `${String(date.getUTCHours()).padStart(2, '0')}:${String(date.getUTCMinutes()).padStart(2, '0')}:${String(date.getUTCSeconds()).padStart(2, '0')}.${String(date.getUTCMilliseconds()).padStart(3, '0')}`;
         },
 
         // Fetch scores from localStorage
         fetchScores() {
             const savedScores = JSON.parse(localStorage.getItem('reactionTimes')) || [];
 
-            // Sort scores and store only the top 10 in the array
             this.reactionTimes = savedScores
                 .sort((a, b) => a.score - b.score)
                 .slice(0, 10);
@@ -179,6 +167,11 @@ p {
 }
 
 @media (min-width:1600px) {
+
+    .high-scores {
+        max-width: 70%;
+        margin: 20px auto;
+    }
 
     tr,
     td {

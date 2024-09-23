@@ -59,12 +59,9 @@ export default {
                 date: new Date().toLocaleString(),
             });
 
-            // Sort the scores in ascending order and store the top 10
-            const topScores = savedScores
-
             // Save the top 10 scores back to localStorage
-            localStorage.setItem('reactionTimes', JSON.stringify(topScores));
-            this.reactionTimes = topScores;
+            localStorage.setItem('reactionTimes', JSON.stringify(savedScores));
+            this.reactionTimes = savedScores;
         },
     },
     mounted() {

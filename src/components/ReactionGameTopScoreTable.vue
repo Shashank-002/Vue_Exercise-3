@@ -1,0 +1,127 @@
+<template>
+    <div class="high-scores">
+        <h2>Your High Scores</h2>
+        <p v-if="!reactionTimes.length">No high scores yet. Try playing a game!</p>
+        <table v-else>
+            <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>Date</th>
+                    <th>Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(time, index) in sortedReactionTimes" :key="index">
+                    <td>{{ index + 1 }}</td>
+                    <td>{{ time.date }}</td>
+                    <td>{{ formatTime(time.score) }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</template>
+
+<script>
+export default {
+    name: 'ReactionGameTopScoreTable',
+    props: {
+        reactionTimes: {
+            type: Array,
+            default: () => [],
+        },
+    },
+    computed: {
+        sortedReactionTimes() {
+            const sorted = [...this.reactionTimes].sort((a, b) => a.score - b.score);
+            return sorted.slice(0, 10);
+        },
+    },
+    methods: {
+        formatTime(score) {
+            const date = new Date(score);
+            return `${String(date.getUTCHours()).padStart(2, '0')}:${String(date.getUTCMinutes()).padStart(2, '0')}:${String(date.getUTCSeconds()).padStart(2, '0')}.${String(date.getUTCMilliseconds()).padStart(3, '0')}`;
+        },
+    },
+};
+</script>
+
+
+
+<style scoped>
+.high-scores {
+    max-width: 80%;
+    margin: 20px auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+thead {
+    background-color: #f4f4f4;
+}
+
+h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    text-align: left;
+}
+
+p {
+    text-align: left;
+    margin-left: 20px;
+}
+
+@media (max-width:1024px) {
+    h2 {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width:575px) {
+    td {
+        font-size: 14px;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+}
+
+@media (max-width:425px) {
+    td {
+        font-size: 12px;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+}
+
+@media (min-width:1600px) {
+
+    .high-scores {
+        max-width: 70%;
+    }
+
+    tr,
+    td {
+        font-size: 30px;
+    }
+
+    h2 {
+        font-size: 32px;
+        margin-bottom: 30px;
+    }
+}
+</style>

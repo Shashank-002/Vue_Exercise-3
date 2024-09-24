@@ -4,17 +4,16 @@
       <ReactionGameStartStopButton :buttonText="buttonText" :reactionGameButton="reactionGameButton"
         :onButtonClick="onStartStopButtonClick" :showModal="showModal" :modalMessage="modalMessage"
         @closeModal="closeModal" />
-      <ReactionGameResultDisplay :message="message" :reactionTime="reactionTime" @savedScore="updateScore" />
+      <ReactionGameResultDisplay :message="message" :reactionTime="reactionTime" @updateScore="updateScore" />
     </div>
-    <ReactionGameTopScoreTable ref="highScoresComponent" />
+    <ReactionGameTopScoreTable :reactionTimes="reactionTimes" />
   </div>
-
 </template>
 
 <script>
 import ReactionGameStartStopButton from './components/ReactionGameStartStopButton.vue';
 import ReactionGameResultDisplay from './components/ReactionGameResultDisplay.vue';
-import ReactionGameTopScoreTable from './components/ReactionGameTopScoreTable.vue'
+import ReactionGameTopScoreTable from './components/ReactionGameTopScoreTable.vue';
 
 export default {
   name: 'App',
@@ -36,11 +35,12 @@ export default {
       reactionTime: null,
       showModal: false,
       modalMessage: "",
+      reactionTimes: JSON.parse(localStorage.getItem('reactionTimes')) || [],
     };
   },
   methods: {
     updateScore() {
-      this.$refs.highScoresComponent.fetchScores();
+      this.reactionTimes = JSON.parse(localStorage.getItem('reactionTimes')) || [];
     },
     onStartStopButtonClick() {
       if (!this.gameStarted) {
@@ -70,13 +70,7 @@ export default {
     stopGame() {
       if (this.gameCanStop) {
         this.reactionTime = performance.now() - this.startTime;
-        const totalSeconds = Math.floor(this.reactionTime / 1000);
-        const hours = Math.floor(totalSeconds / 3600);
-        const minutes = Math.floor((totalSeconds % 3600) / 60);
-        const seconds = (this.reactionTime / 1000).toFixed(3);
-
-        const formattedTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-        this.modalMessage = `Your score of ${(formattedTime)} has been stored in your browser and could be lost when you leave. Create an account or login to automatically save them to your account!`;
+        this.modalMessage = `Your score of ${this.formatTime(this.reactionTime)} has been stored in your browser and could be lost when you leave. Create an account or login to automatically save them to your account!`;
         this.showModal = true;
         this.message = "Click Go to test your reaction time again!";
         this.saveReactionTime(this.reactionTime);
@@ -93,6 +87,13 @@ export default {
       });
       localStorage.setItem('reactionTimes', JSON.stringify(reactionTimes));
       this.updateScore();
+    },
+    formatTime(reactionTime) {
+      const totalSeconds = Math.floor(reactionTime / 1000);
+      const hours = Math.floor(totalSeconds / 3600);
+      const minutes = Math.floor((totalSeconds % 3600) / 60);
+      const seconds = (reactionTime / 1000).toFixed(3);
+      return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
     },
     showError() {
       this.message = "Too quick... Try again!";
@@ -116,6 +117,7 @@ export default {
   },
 };
 </script>
+
 
 <style scoped>
 .app {

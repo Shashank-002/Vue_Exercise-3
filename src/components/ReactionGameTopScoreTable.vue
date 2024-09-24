@@ -21,14 +21,14 @@
     </div>
 </template>
 
-
 <script>
 export default {
     name: 'ReactionGameTopScoreTable',
-    data() {
-        return {
-            reactionTimes: JSON.parse(localStorage.getItem("reactionTimes")) || [],
-        };
+    props: {
+        reactionTimes: {
+            type: Array,
+            default: () => [],
+        },
     },
     computed: {
         sortedReactionTimes() {
@@ -41,34 +41,10 @@ export default {
             const date = new Date(score);
             return `${String(date.getUTCHours()).padStart(2, '0')}:${String(date.getUTCMinutes()).padStart(2, '0')}:${String(date.getUTCSeconds()).padStart(2, '0')}.${String(date.getUTCMilliseconds()).padStart(3, '0')}`;
         },
-
-        // Fetch scores from localStorage
-        fetchScores() {
-            const savedScores = JSON.parse(localStorage.getItem('reactionTimes')) || [];
-
-            this.reactionTimes = savedScores;
-        },
-
-        // Save the new score and ensure only top 10 scores are stored
-        saveScore(newScore) {
-            const savedScores = JSON.parse(localStorage.getItem('reactionTimes')) || [];
-
-            // Add the new score
-            savedScores.push({
-                score: newScore,
-                date: new Date().toLocaleString(),
-            });
-
-            // Save the top 10 scores back to localStorage
-            localStorage.setItem('reactionTimes', JSON.stringify(savedScores));
-            this.reactionTimes = savedScores;
-        },
-    },
-    mounted() {
-        this.fetchScores();
     },
 };
 </script>
+
 
 
 <style scoped>

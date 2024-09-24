@@ -1,7 +1,7 @@
 <template>
     <div class="message-box">
         {{ message }}
-        <div v-if="reactionTime !== null" class="ShowreactionTime">
+        <div v-if="reactionTime !== null" class="show-reaction-time">
             Your reaction time was {{ reactionTimeInSeconds }} seconds.
         </div>
     </div>
@@ -36,7 +36,7 @@ export default {
     gap: 10px;
 }
 
-.ShowreactionTime {
+.show-reaction-time {
     padding-top: 20px;
 }
 

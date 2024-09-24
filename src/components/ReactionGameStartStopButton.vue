@@ -5,8 +5,8 @@
         </button>
 
         <!-- Popup Modal -->
-        <div v-if="showModal" class="reactionGameModal">
-            <div class="modalInnerContent">
+        <div v-if="showModal" class="reaction-game-modal">
+            <div class="modal-inner-content">
                 <div class="error-icon">
                     <i class="info-icon">i</i>
                 </div>
@@ -78,7 +78,7 @@ export default {
     background-color: #5cb85c;
 }
 
-.reactionGameModal {
+.reaction-game-modal {
     position: fixed;
     z-index: 1;
     left: 0;
@@ -101,7 +101,7 @@ export default {
     cursor: pointer;
 }
 
-.modalInnerContent {
+.modal-inner-content {
     background-color: white;
     padding: 20px;
     border-radius: 8px;
@@ -201,7 +201,7 @@ export default {
         font-size: 30px;
     }
 
-    .modalInnerContent {
+    .modal-inner-content {
         width: 280px;
     }
 }
@@ -215,7 +215,7 @@ export default {
         font-size: 20px;
     }
 
-    .modalInnerContent {
+    .modal-inner-content {
         width: 220px;
     }
 }
@@ -228,7 +228,7 @@ export default {
         width: 160px;
     }
 
-    .modalInnerContent {
+    .modal-inner-content {
         width: 220px;
     }
 }
@@ -242,7 +242,7 @@ export default {
         font-size: 60px;
     }
 
-    .modalInnerContent {
+    .modal-inner-content {
         width: 500px;
         height: 400px;
     }
